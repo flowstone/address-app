@@ -1,0 +1,16 @@
+.project
+.factorypath
+*.class
+*.log
+**/target/**
+**/.settings/**
+.classpath
+.svn/**
+.idea
+.idea/**
+agbob-user.iml
+.metadata/**
+logging.fileDir*
+/target/
+/bin/
+/.idea
