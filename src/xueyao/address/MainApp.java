@@ -72,6 +72,11 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        File file = getPersonFilePath();
+        if (null != file) {
+            loadPersonDataFromFile(file);
+        }
     }
 
     public void showPersonOverview() {
