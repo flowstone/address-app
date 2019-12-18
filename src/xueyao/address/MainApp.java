@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import xueyao.address.controller.BirthdayStatisticsController;
 import xueyao.address.controller.PersonEditDialogController;
 import xueyao.address.controller.PersonOverviewController;
 import xueyao.address.controller.RootLayoutController;
@@ -72,6 +73,10 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        /**
+         * 初始化，加载本地数据
+         */
 
         File file = getPersonFilePath();
         if (null != file) {
@@ -150,7 +155,7 @@ public class MainApp extends Application {
 
             setPersonFilePath(file);
         } catch (Exception e) {
-            DialogUtil.createError("Error", "Could not load data from file");
+            DialogUtil.createError("加载错误", "加载文件出错，请重试!");
         }
     }
 
@@ -167,7 +172,28 @@ public class MainApp extends Application {
 
             setPersonFilePath(file);
         } catch (Exception e) {
-            DialogUtil.createError("Error", "Could not save data to file");
+            DialogUtil.createError("错误", "保存数据出错，请重试!");
+        }
+    }
+
+    public void showBirthdayStatistics() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("view/BirthdayStatistics.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("生日图表");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            BirthdayStatisticsController controller = loader.getController();
+            controller.setPersonData(personObservableList);
+
+            dialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
