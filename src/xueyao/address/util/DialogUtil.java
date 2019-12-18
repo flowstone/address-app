@@ -32,4 +32,12 @@ public class DialogUtil {
         Optional<ButtonType> result = alert.showAndWait();
         alert.close();
     }
+
+    public static void createError(String title, String conent) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(conent);
+        Optional<ButtonType> result = alert.showAndWait();
+        alert.close();
+    }
 }
