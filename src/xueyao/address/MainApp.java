@@ -26,16 +26,22 @@ import java.io.IOException;
 import java.util.prefs.Preferences;
 
 /**
+ * 程序的入口
  * @author simonxue
  */
 public class MainApp extends Application {
-
+    /**
+     * 主要的舞台
+     */
     private Stage primaryStage;
+
     private BorderPane rootLayout;
 
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+
     private ObservableList<Person> personObservableList = FXCollections.observableArrayList();
 
     public MainApp() {

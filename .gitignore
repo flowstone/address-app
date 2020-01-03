@@ -14,3 +14,4 @@ logging.fileDir*
 /target/
 /bin/
 /.idea
+out
